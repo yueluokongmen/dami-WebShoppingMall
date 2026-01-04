@@ -25,7 +25,7 @@
 ## 🚀 本地运行 
 1. 克隆项目：`git clone https://github.com/yueluokongmen/dami-WebShoppingMall.git`
 2. 导入 SQL 文件至 MySQL 数据库。
-3. 后端：IDEA 打开 `mall-backend`，运行 Application。
+3. 后端：IDEA 打开 `mall-backend`，先将application.yml的active配置为dev，再运行 Application。
 4. 前端：VSCode 打开 `mall-frontend`，先`npm install`安装依赖后再运行 `npm run dev`。
 
 ## ☁ 云端测试
