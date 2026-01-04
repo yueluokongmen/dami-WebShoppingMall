@@ -27,3 +27,8 @@
 2. 导入 SQL 文件至 MySQL 数据库。
 3. 后端：IDEA 打开 `mall-backend`，运行 Application。
 4. 前端：VSCode 打开 `mall-frontend`，运行 `npm run dev`。
+
+## ☁ 云端测试
+1. 新用户直接点击登录然后注册
+2. 管理员登录入口直接在ip后输入/admin/login，然后输入账号即可
+3. 网站性能不是很好，点击操作要慢一些，点击操作后如果卡顿请等待几秒钟
