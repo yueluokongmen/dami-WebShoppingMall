@@ -85,7 +85,7 @@ const route = useRoute()
 
 const orderList = ref<any[]>([])
 const activeStatus = ref('all') // 默认选全部
-const defaultImg = 'https://images.unsplash.com/photo-1598327105666-5b89351aff23?w=100&h=100&fit=crop'
+const defaultImg = '/imgs/default.webp'
 
 const emptyText = computed(() => {
     return activeStatus.value === 'all' ? '您还没有订单' : '暂无该状态的订单'

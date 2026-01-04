@@ -64,7 +64,10 @@
     <div class="container loading-box" v-else>
       <el-skeleton :rows="10" animated />
     </div>
-
+    <div class="container detail-content" v-if="spu.detail">
+      <h3 class="section-title">商品详情</h3>
+      <div class="content">{{ spu.detail }}</div>
+    </div>
     <div class="site-footer">
       <div class="container">大米商城 © 2025 Mi Mall Demo</div>
     </div>
@@ -132,31 +135,33 @@ const loadDetail = async () => {
     if (typeof spuData.specOptions === 'string') spuData.specOptions = JSON.parse(spuData.specOptions)
 
     if (Array.isArray(spuData.specOptions)) {
-        spuData.specOptions.forEach((item: any) => {
-            if (typeof item.list === 'string') {
-                try {
-                    item.list = JSON.parse(item.list)
-                } catch(e) {}
-            }
-        })
+      spuData.specOptions.forEach((item: any) => {
+        if (typeof item.list === 'string') {
+          try {
+            item.list = JSON.parse(item.list)
+          } catch (e) { }
+        }
+      })
     }
 
     // console.log('处理后的 specOptions:', spuData.specOptions)
 
 
     skuData.forEach((item: any) => {
-        if (typeof item.specs === 'string') {
-            try {
-                item.specs = JSON.parse(item.specs)
-            } catch(e) {}
-        }
+      if (typeof item.specs === 'string') {
+        try {
+          item.specs = JSON.parse(item.specs)
+        } catch (e) { }
+      }
     })
 
     spu.value = spuData
     skuList.value = skuData
 
     initSpecs()
-
+    if (userStore.userInfo.userId) {
+    recordBrowseLog(spuData)
+}
   } catch (error) {
     console.error(error)
     ElMessage.error('获取商品详情失败')
@@ -179,10 +184,23 @@ const initSpecs = () => {
 const selectSpec = (key: string, value: string) => {
   selectedSpecs[key] = value
 }
-
+//记录浏览日志
+const recordBrowseLog = async (product: any) => {
+  try {
+    await request.post('/user/log/add', {
+      userId: userStore.userInfo.userId,
+      username: userStore.userInfo.username,
+      productId: product.productId,
+      productName: product.productName
+    })
+  } catch (e) {
+    //日志记录失败
+    console.error('Log error', e)
+  }
+}
 //加入购物车
 const handleAddToCart = async () => {
-  if (!userStore.userInfo.userId) { 
+  if (!userStore.userInfo.userId) {
     ElMessage.warning('请先登录')
     router.push('/login')
     return
@@ -195,7 +213,7 @@ const handleAddToCart = async () => {
 
   const params = {
     userId: userStore.userInfo.userId,
-    skuId: currentSku.value.skuId, 
+    skuId: currentSku.value.skuId,
     cartQuantity: 1
   }
 
@@ -319,7 +337,7 @@ onMounted(() => {
       border-bottom: 1px solid #e0e0e0;
       padding-bottom: 15px;
 
-      
+
     }
 
     .line {
@@ -413,5 +431,34 @@ onMounted(() => {
   background: #fff;
   border-top: 1px solid #eee;
   margin-top: 50px;
+}
+
+.detail-content {
+  margin-top: 40px;
+  background: #fff;
+  padding: 40px;
+  min-height: 200px;
+  border: 1px solid #e0e0e0;
+}
+
+.detail-content .section-title {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-content .content {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.8;
+  white-space: pre-wrap; 
+}
+
+.detail-content .content :deep(img) {
+  max-width: 100%;
+  display: block;
+  margin: 10px 0;
 }
 </style>

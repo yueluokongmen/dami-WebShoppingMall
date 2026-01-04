@@ -95,10 +95,12 @@ const fetchCart = async () => {
 
 //处理图片显示
 const parseImg = (item: any) => {
-
-    return 'https://images.unsplash.com/photo-1598327105666-5b89351aff23?w=100&h=100&fit=crop'
+    if (item.productImage) {
+        return item.productImage
+    }
+    //显示默认图
+    return '/imgs/default.webp'
 }
-
 //计算总价和选中数量
 const totalPrice = ref(0)
 const checkedCount = ref(0)

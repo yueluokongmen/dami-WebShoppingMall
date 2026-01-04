@@ -42,7 +42,6 @@
             <div class="form-footer">
               <span class="link-text register" @click="$router.push('/register')">立即注册</span>
               <span class="separator">|</span>
-              <span class="link-text">忘记密码？</span>
             </div>
           </el-form>
         </el-card>

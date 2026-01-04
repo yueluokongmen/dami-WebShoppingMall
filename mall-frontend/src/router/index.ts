@@ -82,6 +82,11 @@ const routes = [
                 meta: { title: '商品列表' }
             },
             {
+                path: 'product/add',
+                component: () => import('../views/admin/ProductAdd.vue'),
+                meta: { title: '发布商品' }
+            },
+            {
                 path: 'orders',
                 component: () => import('../views/admin/OrderList.vue'),
                 meta: { title: '订单列表' }
@@ -90,6 +95,26 @@ const routes = [
                 path: 'users',
                 component: () => import('../views/admin/UserList.vue'),
                 meta: { title: '客户列表' }
+            },
+            {
+                path: 'category',
+                component: () => import('../views/admin/CategoryManage.vue'),
+                meta: { title: '分类管理' }
+            },
+            {
+                path: 'users',
+                component: () => import('../views/admin/UserList.vue'),
+                meta: { title: '客户列表' }
+            },
+            {
+                path: 'stats',
+                component: () => import('../views/admin/SalesStats.vue'),
+                meta: { title: '销售统计' }
+            },
+            {
+                path: 'logs',
+                component: () => import('../views/admin/BrowsingLogs.vue'),
+                meta: { title: '浏览日志' }
             }
         ]
     }

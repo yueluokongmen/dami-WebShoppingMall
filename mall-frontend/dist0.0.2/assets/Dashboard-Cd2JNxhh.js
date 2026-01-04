@@ -1,0 +1,1 @@
+import{_ as r,a as s,b as a,s as n}from"./index-Cvb7EvRk.js";const o={};function t(c,e){return n(),s("div",null,[...e[0]||(e[0]=[a("h1",null,"欢迎来到后台管理系统",-1)])])}const _=r(o,[["render",t]]);export{_ as default};

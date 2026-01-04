@@ -84,23 +84,22 @@ const rules = {
 const formRef = ref()
 
 const handleRegister = async () => {
-    // 1. 校验表单
+    //校验表单
     if (!formRef.value) return
     await formRef.value.validate(async (valid: boolean) => {
         if (valid) {
             loading.value = true
             try {
-                // 2. 发送注册请求
+                //送注册请求
                 await request.post('/user/register', {
                     username: form.username,
                     password: form.password
                 })
 
                 ElMessage.success('注册成功，请登录')
-                // 3. 跳转去登录页
+                //跳转去登录页
                 router.push('/login')
             } catch (e) {
-                // 报错已经在 request.ts 里弹出了，这里不用处理
             } finally {
                 loading.value = false
             }

@@ -114,7 +114,7 @@ const userStore = useUserStore()
 const stats = ref({ unpaid: 0, unshipped: 0 })
 const defaultAvatar = 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
 
-const baseURL = 'http://8.163.12.69:8081'
+const baseURL = import.meta.env.VITE_API_BASE_URL
 const uploadUrl = `${baseURL}/file/upload`
 
 // 弹窗控制

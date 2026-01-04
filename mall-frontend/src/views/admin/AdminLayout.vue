@@ -23,6 +23,7 @@
                         </template>
                         <el-menu-item index="/admin/products">商品列表</el-menu-item>
                         <el-menu-item index="/admin/product/add">发布商品</el-menu-item>
+                        <el-menu-item index="/admin/category">分类/系列管理</el-menu-item>
                     </el-sub-menu>
 
                     <el-sub-menu index="2">

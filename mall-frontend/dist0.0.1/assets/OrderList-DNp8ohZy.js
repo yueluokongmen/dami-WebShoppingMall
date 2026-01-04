@@ -1,0 +1,1 @@
+import{_ as o,K as r,g as s,j as n,h as a,s as c}from"./index-DSi-hGWH.js";const _={};function l(d,e){const t=a("el-card");return c(),r(t,null,{default:s(()=>[...e[0]||(e[0]=[n("这里是订单管理与报表",-1)])]),_:1})}const p=o(_,[["render",l]]);export{p as default};

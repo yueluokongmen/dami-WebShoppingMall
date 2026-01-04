@@ -27,7 +27,6 @@
             <template v-else>
               <span class="link" @click="$router.push('/login')">登录</span>
               <span class="sep">|</span>
-              <span class="link" @click="$router.push('/register')">注册</span>
             </template>
           </div>
 
@@ -71,9 +70,20 @@
       <div class="site-category">
         <ul class="category-list">
           <li v-for="category in categoryList" :key="category.id" class="category-item">
-            <a href="javascript:;" class="title">{{ category.name }} <el-icon>
+
+            <a href="javascript:;" class="title">
+              <span class="category-icon">
+                <component v-if="category.icon" :is="category.icon"
+                  style="width: 18px; height: 18px; margin-right: 8px; vertical-align: middle;" />
+              </span>
+
+              {{ category.name }}
+
+              <el-icon class="arrow-right">
                 <ArrowRight />
-              </el-icon></a>
+              </el-icon>
+            </a>
+
             <div class="children-col" v-if="category.children && category.children.length > 0">
               <div v-for="sub in category.children" :key="sub.id" class="sub-item" @click="searchByFamily(sub.id)">
                 <img :src="sub.img" alt="">
@@ -99,7 +109,7 @@
         <h2 class="section-title">手机</h2>
         <div class="goods-box">
           <div class="promo-card">
-            <img src="https://images.unsplash.com/photo-1550029402-2261131787cd?w=234&h=614&fit=crop" alt="">
+            <img src="/imgs/sidebar1.webp" alt="">
           </div>
           <div class="goods-list">
             <div v-for="item in phoneList.slice(0, 8)" :key="item.productId" class="goods-card" @click="toDetail(item)">
@@ -117,7 +127,7 @@
         <h2 class="section-title">笔记本 平板</h2>
         <div class="goods-box">
           <div class="promo-card">
-            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=234&h=614&fit=crop" alt="">
+            <img src="/imgs/sidebar2.webp" alt="">
           </div>
           <div class="goods-list">
             <div v-for="item in laptopList.slice(0, 8)" :key="item.productId" class="goods-card"
@@ -157,14 +167,14 @@ const router = useRouter()
 const phoneList = ref<any[]>([])
 const laptopList = ref<any[]>([])
 
-const defaultImg = 'https://images.unsplash.com/photo-1598327105666-5b89351aff23?w=100&h=100&fit=crop'
+const defaultImg = '/imgs/default.webp'
 const cartHover = ref(false)
 const loadingCart = ref(false)
 const miniCartList = ref<any[]>([])
 const swiperList = [
-  'https://images.unsplash.com/photo-1556656793-02774a8316ea?w=1226&h=460&fit=crop',
-  'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1226&h=460&fit=crop',
-  'https://images.unsplash.com/photo-1598327105666-5b89351aff23?w=1226&h=460&fit=crop'
+  '/imgs/lunbotu1.jpg',
+  '/imgs/lunbotu2.webp',
+  '/imgs/lunbotu3.webp',
 ]
 const categoryList = ref<any[]>([])
 const searchKeyword = ref('')
@@ -225,7 +235,7 @@ const useDefaultImg = (e: Event) => { (e.target as HTMLImageElement).src = defau
 
 onMounted(() => {
   fetchNav()
-  fetchFloors()   
+  fetchFloors()
   fetchMiniCart()
 })
 </script>

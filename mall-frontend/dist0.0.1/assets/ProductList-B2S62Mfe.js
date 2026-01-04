@@ -1,0 +1,1 @@
+import{_ as o,K as r,g as s,j as n,h as c,s as a}from"./index-DSi-hGWH.js";const _={};function l(d,e){const t=c("el-card");return a(),r(t,null,{default:s(()=>[...e[0]||(e[0]=[n("这里是商品管理（增删改查）",-1)])]),_:1})}const p=o(_,[["render",l]]);export{p as default};

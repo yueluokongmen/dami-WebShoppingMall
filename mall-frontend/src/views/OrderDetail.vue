@@ -114,7 +114,7 @@ import request from '../utils/request'
 
 const route = useRoute()
 const order = ref<any>({})
-const defaultImg = 'https://images.unsplash.com/photo-1598327105666-5b89351aff23?w=100&h=100&fit=crop'
+const defaultImg = '/imgs/default.webp'
 
 const activeStep = computed(() => {
     const status = order.value.orderStatus

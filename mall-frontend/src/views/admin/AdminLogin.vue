@@ -52,12 +52,17 @@ const handleLogin = async () => {
 
     loading.value = true
     try {
-        //调用/admin/login 接口
+        //调用后端接口
         const res: any = await request.post('/admin/login', form)
-
-        // 存入Store
-        userStore.userInfo = res
-        userStore.token = 'admin-token-mock' // 暂时模拟Token
+        
+        
+        userStore.token = res.token 
+        
+        //存入用户信息
+        userStore.userInfo = res.user
+        
+        //写入localStorage
+        localStorage.setItem('token', res.token)
 
         ElMessage.success('欢迎回来，管理员')
         router.push('/admin/dashboard')
