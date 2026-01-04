@@ -27,3 +27,7 @@
 2. 导入 SQL 文件至 MySQL 数据库。
 3. 后端：IDEA 打开 `mall-backend`，运行 Application。
 4. 前端：VSCode 打开 `mall-frontend`，运行 `npm run dev`。
+
+## ☁ 云端测试方法
+1.用户直接登录即可
+2.管理员在地址后输入/admin/login，再输入账号即可
